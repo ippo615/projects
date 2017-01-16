@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- Site Properties -->
+  <title>Andrew Ippoliti's Portfolio</title>
+
+	<link rel="stylesheet" type="text/css" href="libs/Semantic-UI-CSS/semantic.min.css">
+
+	<script src="libs/jquery.min.js" ></script>
+	<script src="libs/Semantic-UI-CSS/semantic.min.js"></script>
+	<script src="libs/list.js"></script>
+
+  <script>
+  $(document)
+    .ready(function() {
+
+      // fix main menu to page on passing
+      $('.main.menu').visibility({
+        type: 'fixed'
+      });
+      $('.overlay').visibility({
+        type: 'fixed',
+        offset: 80
+      });
+
+      // lazy load images
+      $('.image').visibility({
+        type: 'image',
+        transition: 'vertical flip in',
+        duration: 500
+      });
+
+      // show dropdown on hover
+      $('.main.menu  .ui.dropdown').dropdown({
+        on: 'hover'
+      });
+
+			// setup the searching+results
+			var valueNames = [
+				'listjs-title',
+				'listjs-tags'
+			];
+			var options = {
+			  valueNames: valueNames,
+				listClass: 'listjs-list',
+				searchClass: 'listjs-search',
+			};
+			var recycleList = new List('recycle-list', options);
+			$('.ui.accordion').accordion({
+				exclusive: false
+			});
+
+      // Search term extraction
+      // ex: http://trashy.tips/#/apples
+			var searchHash = decodeURI(window.location.hash.slice(2));
+      $('#input-search').val( searchHash );
+			recycleList.search(searchHash,valueNames);
+			recycleList.update();
+    })
+  ;
+  </script>
+
+  <style type="text/css">
+
+  body {
+    background-color: #FFFFFF;
+  }
+  .main.container {
+    margin-top: 2em;
+  }
+
+  .main.menu {
+    margin-top: 4em;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    transition:
+      box-shadow 0.5s ease,
+      padding 0.5s ease
+    ;
+  }
+  .main.menu .item img.logo {
+    margin-right: 1.5em;
+  }
+
+  .overlay {
+    float: left;
+    margin: 0em 3em 1em 0em;
+  }
+  .overlay .menu {
+    position: relative;
+    left: 0;
+    transition: left 0.5s ease;
+  }
+
+  .main.menu.fixed {
+    background-color: #FFFFFF;
+    border: 1px solid #DDD;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+  }
+  .overlay.fixed .menu {
+    left: 800px;
+  }
+
+  .text.container .left.floated.image {
+    margin: 2em 2em 2em -4em;
+  }
+  .text.container .right.floated.image {
+    margin: 2em -4em 2em 2em;
+  }
+
+  .ui.footer.segment {
+    margin: 5em 0em 0em;
+    padding: 5em 0em;
+  }
+
+	.main-column {
+		margin-top: 2em;
+	}
+
+	iframe {
+		width: 700px;
+		height: 320px;
+	}
+
+  </style>
+
+</head>
+<body id="recycle-list">
+
+  <div class="ui text container fluid main-column">
+		<div class="ui fluid styled listjs-list">
+
+<h1 class="ui dividing header">Andrew Ippoliti</h1>
+<!--
+<div class="ui piled segment">
+  <h4 class="ui header">About</h4>
+  <p>Blah blah blah</p>
+</div>
+-->
+
+<h2 class="ui dividing header"><i class="map icon"></i>Projects</h2>
+<!--<p>Blah blah blah</p>-->
+<!--
+<div class="ui fluid image rounded">
+	<iframe src="http://trashy.tips/" />
+</div>
+-->
+<!--
+https://github.com/ippo615/experiments-microcontroller
+<iframe src="http://ippo615.github.io/open-emoticon-web/" ></iframe>
+<iframe src="http://ippo615.github.io/quiz-me/" ></iframe>
+<iframe src="http://ippo615.github.io/minute-math-addition/" ></iframe>
+<iframe src="http://ippo615.github.io/word-search/search/index.html" ></iframe>
+<iframe src="http://ippo615.github.io/anagram/anagram/index.html" ></iframe>
+<iframe src="https://ippo615.github.io/crave-tracker/" ></iframe>
+<iframe src="https://projectuplift.github.io/breath/" ></iframe>
+<iframe src="http://acipo.com/apps/calc-molar-mass-large/" ></iframe>
+<iframe src="http://ippo615.github.io/to-try/"></iframe>
+<iframe src="/more-projects/fold/"></iframe>
+<iframe src="/more-projects/csg/"></iframe>
+<iframe src="http://ippo615.github.io/js-graph/"></iframe>
+<iframe src="http://acipo.com/apps/music-read/" style="height: 400px;" ></iframe>
+-->
+
+<!--<iframe src="http://acipo.com/tools/clusterizer/" ></iframe>-->
+
+<div class="ui one cards">
+
+		<a class="ui card" href="more-projects/helping-hands/index.html">
+      <div class="image">
+        <img src="./images/helping-hands.jpg">
+      </div>
+      <div class="content">
+        <span class="header">Helping Hands</span>
+				<div class="meta">Arming the world</div>
+				<div class="description">
+					<p>Connecting 3D printed prosthetic arms and amputees to restore their confidence and independence.</p>
+				</div>
+      </div>
+    </a>
+
+		<a class="ui card" href="http://trashy.tips">
+      <div class="image">
+        <img src="./images/portfolio-trashy-tips.jpg">
+      </div>
+      <div class="content">
+        <span class="header">Trashy.Tips</span>
+				<div class="meta">Turning Trash into Treasure</div>
+				<div class="description">
+					<p>Provides maps, guides, and information on all sorts of garbage.</p>
+				</div>
+      </div>
+    </a>
+
+		<a class="ui card" href="http://ippo615.github.io/open-emoticon-web/">
+      <div class="image">
+        <img src="./images/open-emoticon.png">
+      </div>
+      <div class="content">
+        <span class="header">Open Emoticon Web</span>
+				<div class="meta">Like Font Awesome but for emoticons</div>
+				<div class="description">
+					<p>Embed emoticons on your webpages the same way you would embed those fancy, scalable, web-font based icons.</p>
+				</div>
+      </div>
+    </a>
+
+
+		<a class="ui card" href="https://projectuplift.github.io/breath/">
+      <div class="image">
+        <img src="./images/portfolio-breath.png">
+      </div>
+      <div class="content">
+        <span class="header">Breath</span>
+				<div class="meta"></div>
+				<div class="description">
+					<p>App for mantra meditations.</p>
+				</div>
+      </div>
+    </a>
+
+		<a class="ui card" href="http://ippo615.github.io/quiz-me/">
+      <div class="image">
+        <img src="./images/portfolio-quiz-me-03.png">
+      </div>
+      <div class="content">
+        <span class="header">Quiz Me</span>
+				<div class="meta">Learn All The Subjects!</div>
+				<div class="description">
+					<p>Get quized in everything from grammar, to chemestry, to math, to linux, to geometry. Works great on a smart board/projector.</p>
+				</div>
+      </div>
+    </a>
+
+		<a class="ui card" href="/more-projects/fold/">
+      <div class="image">
+        <img src="./images/portfolio-fold-editor.png">
+      </div>
+      <div class="content">
+        <span class="header">Fold Editor</span>
+				<div class="meta">Papercraft without the papercuts</div>
+				<div class="description">
+					<p>Define 2D shapes and watch them get folded into 3D objects.</p>
+				</div>
+      </div>
+    </a>
+
+		<a class="ui card" href="/more-projects/csg/">
+      <div class="image">
+        <img src="./images/portfolio-csg-editor.png">
+      </div>
+      <div class="content">
+        <span class="header">CSG Editor</span>
+				<div class="meta">Constructive Solid Geometry Editor</div>
+				<div class="description">
+					<p>Create 3D objects easily.</p>
+				</div>
+      </div>
+    </a>
+
+		<a class="ui card" href="http://ippo615.github.io/js-graph/">
+      <div class="image">
+        <img src="./images/portfolio-js-graph.png">
+      </div>
+      <div class="content">
+        <span class="header">Graph Plotter</span>
+				<div class="meta">Powerful graphs in your browser</div>
+				<div class="description">
+					<p>Works great on a projector or on your phone (and on every display in between).</p>
+				</div>
+      </div>
+    </a>
+
+		<a class="ui card" href="http://ippo615.github.io/courage-calendar/">
+      <div class="image">
+        <img src="./images/portfolio-courage-calendar.png">
+      </div>
+      <div class="content">
+        <span class="header">Courage Calendar</span>
+				<div class="meta">Worst. Calendar. Ever.</div>
+				<div class="description">
+					<p>Don't plan to do stuff later. Do it now because this calendar won't save anything for you.</p>
+				</div>
+      </div>
+    </a>
+
+		<a class="ui card" href="https://github.com/ippo615/experiments-microcontroller/tree/master/c6713-dsk-tone-analyzer">
+      <div class="image">
+        <img src="./images/portfolio-music-decomposition.png">
+      </div>
+      <div class="content">
+        <span class="header">RealTime Music Decomposer</span>
+				<div class="meta">Using the C6713 DSK as a Tone Analyzer</div>
+				<div class="description">
+					<p>Works great for single notes and pure sinusoids. Can be tweaked for better results with real instruments but does not work well when things get complicated.</p>
+				</div>
+      </div>
+    </a>
+
+		<!--
+		<a class="ui card" href="http://compostandco.marcshifflett.com/">
+      <div class="image">
+        <img src="./images/map-preview-compost.jpg">
+      </div>
+      <div class="content">
+        <span class="header">Compost</span>
+      </div>
+    </a>
+		-->
+
+</div>
+
+</div>
+</div>
+
+</body>
+
+</html>
